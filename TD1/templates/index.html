@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles BDM</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body, .article-container, .article {
+    background-color: pink;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+form input, form button {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form a button {
+    background-color: #6c757d;
+}
+
+form a button:hover {
+    background-color: #495057;
+}
+
+.article-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.article-container .article a {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+
+.article-container .article a:hover {
+    text-decoration: none;
+    color: pink;
+}
+
+.article {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.article:hover {
+    transform: translateY(-5px);
+}
+
+.article h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.article img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    height: 180px;
+}
+
+.article .meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: auto;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Articles du Blog du Modérateur</h1>
+
+    <form method="GET" action="{{ url_for('index') }}">
+        <input type="text" name="query" placeholder="Rechercher un article par titre, auteur, résumé, catégorie, sous-catégorie" value="{{ query }}">
+        <button type="submit">Rechercher</button>
+        {% if query %}
+        <a href="{{ url_for('index') }}"><button type="button">Réinitialiser</button></a>
+        {% endif %}
+    </form>
+
+    {% if articles %}
+        {% for article in articles %}
+        <div class="article-container">
+            {% for article in articles %}
+            <div class="article">
+                <h2><a href="{{ article['url'] }}" target="_blank">{{ article['titre'] }}</a></h2>
+                {% if article['thumbnail'] %}
+                <img src="{{ article['thumbnail'] }}" alt="Thumbnail">
+                {% endif %}
+                <p>{{ article['resume'] or 'Pas de résumé disponible.' }}</p>
+                <div class="meta">
+                    <p><strong>Auteur :</strong> {{ article['auteur'] or 'Inconnu' }}</p>
+                    <p><strong>Catégorie :</strong> {{ article['categorie'] or 'NC' }} > {{ article['sous_categorie'] or 'NC' }}</p>
+                    <p><strong>Publié le :</strong> {{ article['date_publication'] or 'Non renseigné' }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Aucun article trouvé.</p>
+    {% endif %}
+</div>
+</body>
+</html>
