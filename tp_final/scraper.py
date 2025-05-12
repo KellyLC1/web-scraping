@@ -57,7 +57,7 @@ df = pd.DataFrame(all_books)
 df.to_csv("data.csv", index=False)
 print("✅ Fichier data.csv créé avec succès.")
 
-# Connexion à MongoDB local (ou remplace par MongoDB Atlas si besoin)
+# Connexion à MongoDB local
 client = MongoClient("mongodb://localhost:27017/")
 db = client["librairie"]
 collection = db["livres"]

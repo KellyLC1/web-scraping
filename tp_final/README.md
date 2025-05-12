@@ -33,56 +33,23 @@ Cette application permet de gérer une librairie en ligne avec une interface int
 
 Clonez ce repository et installez les dépendances requises :
 
-git clone https://github.com/votre-repository/librairie-en-ligne.git
-cd librairie-en-ligne
+git clone https://github.com/KellyLC1/web-scraping/tree/main/tp_final
+cd tp_final
 pip install -r requirements.txt
-Assurez-vous d'avoir MongoDB installé et exécuté localement avec la base de données librairie et la collection livres configurée.
 
 Exécution
 Lancez l'application Streamlit avec la commande suivante :
 
-bash
-Copier
-Modifier
 streamlit run app.py
-Cela ouvrira l'application dans votre navigateur.
 
 Structure du projet
-bash
-Copier
-Modifier
-librairie-en-ligne/
+
+tp_final/
 │
-├── app.py               # Application principale Streamlit
-├── requirements.txt     # Liste des dépendances Python
-├── data/                # Dossier contenant les données MongoDB
-└── README.md            # Documentation du projet
-Contribuer
-Forkez le projet.
+├── app.py               
+├── analytics.txt     
+├── data.csv               
+└── scraper.py                
+└── README.md            
+           
 
-Créez une branche pour votre fonctionnalité (git checkout -b feature/ma-nouvelle-fonctionnalite).
-
-Committez vos changements (git commit -am 'Ajout d\'une fonctionnalité').
-
-Poussez sur la branche (git push origin feature/ma-nouvelle-fonctionnalite).
-
-Ouvrez une Pull Request.
-
-License
-Distribué sous la licence MIT. Voir LICENSE pour plus de détails.
-
-yaml
-Copier
-Modifier
-
----
-
-### **Google Doc** :
-
-J'ai créé un **Google Doc** pour documenter davantage le projet. Tu peux y accéder via ce lien : [Google Doc - Documentation Librairie en ligne](https://docs.google.com/document/d/1x4FVPl0ok8Bb77I3t-JrcFmpv9EIs6lOC2wJ0-37BbI/edit?usp=sharing).
-
-Tu y trouveras des détails supplémentaires sur le fonctionnement de l'application, ainsi que des instructions pour la configuration de MongoDB et l'ajout de données.
-
----
-
-N'hésite pas à me dire si tu souhaites ajouter des informations spécifiques à ces documents !
